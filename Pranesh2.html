@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MOVE AN ELEMENT IN RECTANGLE AND CONTROL ITS SPEED</title>
+  
+  <style type='text/css'>
+    #m {
+    position: absolute;
+    top:100px;
+    left:100px;
+    width:100px;
+    height:100px;
+    background: red;
+    border-radius:15px;
+}
+  </style>
+  
+
+
+<script type='text/javascript'> 
+window.onload=function(){
+ var e = document.getElementById('m'); 
+ speed = prompt("Enter the speed in pixels per frame to move:");
+ var ox = e.offsetLeft;
+ var oy = e.offsetTop;
+
+ var X = e.offsetLeft;
+ var Y = e.offsetTop;
+ disx = 300; 
+ disy = 300; 
+ 
+ 
+ function movex(disx, direction) { 
+     if (direction === 1) {
+         x = setInterval(function () {
+             if (e.offsetLeft < disx) {
+                 ox += speed * direction;
+                 e.style.left = ox + 'px';
+             } else {
+                 clearInterval(x);
+                 movey(disy, direction);
+             }
+
+         }, 20);
+     } else {
+         x = setInterval(function () {
+             if (e.offsetLeft >= disx) {
+                 ox += speed * direction;
+                 e.style.left = ox + 'px';
+             } else {
+                 clearInterval(x);
+                 movey(Y, direction);
+
+
+             }
+
+         }, 20);
+     }
+ }
+ 
+ function movey(disy, direction) { 
+     if (direction === 1) {
+         y = setInterval(function () {
+             if (e.offsetTop < disy) {
+                 oy += speed * direction;
+                 e.style.top = oy + 'px';
+             } else {
+                 clearInterval(y);
+                 movex(X, -direction);
+
+
+             }
+
+         }, 20);
+     } else {
+         y = setInterval(function () {
+             if (e.offsetTop >= disy) {
+                 oy += speed * direction;
+                 e.style.top = oy + 'px';
+             } else {
+                 movex(disx, -direction);
+                 clearInterval(y);
+
+             }
+
+         }, 20);
+     }
+ }
+ movex(300, 1);
+}  
+
+</script>
+
+
+</head>
+<body>
+  <div id='m'></div>
+  <p>Refresh TO SPEED THE ELEMENT MOVING IN RECTANGLE  !</p>
+</body>
+</html>
