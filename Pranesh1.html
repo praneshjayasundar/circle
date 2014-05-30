@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MOVE AN ELEMENT IN A CIRCLE</title>
+<script  type='text/JavaScript'>
+var d=2;
+function display()
+{
+	var y=200+(100*Math.sin(d));
+	var x=600+(100*Math.cos(d));
+	d=d+0.10;
+	document.getElementById('arsenal').style.top= y + "px";
+	document.getElementById('arsenal').style.left= x + "px";
+}
+function rotate()
+{
+	display();
+	setTimeout('rotate()',10);
+}
+</script>
+</head>
+<body onLoad="rotate()">
+<img src='a.png' id='arsenal' style="position:absolute; left: 400; top: 100;">
+</body>
+</html>
